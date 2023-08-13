@@ -1,27 +1,14 @@
 function sortList(unsortedList) {
-  const sortedList = [];
-  let prev = null;
-  for (let i = 0; i < unsortedList.length; i++) {
-    const current_num = unsortedList[i];
-    if (prev === null) {
-      sortedList.push(current_num);
-      prev = current_num;
-    }
-    for (let j = 0; j < sortList.length; j++) {
-      if (sortedList[j] < prev) {
-        sortedList[i - 1] = sortList[j];
-        sortedList.push(prev);
-        prev = prev;
+		for (let i = 0; i < unsortedList.length; i++) {
+    	if (unsortedList[i] < unsortedList[i - 1]) {      	
+        const temp = unsortedList[i - 1];
+	      unsortedList[i - 1] = unsortedList[i];
+        unsortedList[i] = temp;
+				i -= 2;
       }
-    }
-  }
-  return sortList;
+    } 
+    
+    return unsortedList;
 }
 
-function main() {
-  const unsortedList = [1, 5, 2, 3, 4];
-  const sortedList = sortList(unsortedList);
-  console.log(sortedList);
-}
-
-main();
+module.exports = sortList;
